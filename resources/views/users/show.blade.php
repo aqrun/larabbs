@@ -15,10 +15,10 @@
                     <div class="media-body">
                         <hr/>
                         <h4><strong>Profile</strong></h4>
-                        <p>some description</p>
+                        <p>{{ $user->introduction }}</p>
                         <hr>
                         <h4><strong>Register At:</strong></h4>
-                        <p>20180220348</p>
+                        <p>{{ $user->created_at->diffForHumans() }}</p>
                     </div>
                 </div>
             </div>
