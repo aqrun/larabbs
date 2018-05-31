@@ -11,7 +11,9 @@
         @include('common.error')
 
         <div class="panel-body">
-            <form action="{{ route('users.update', $user->id) }}" method="post">
+            <form action="{{ route('users.update', $user->id) }}"
+                  enctype="multipart/form-data"
+                  method="post">
                 <input type="hidden" name="_method" value="put">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
@@ -29,6 +31,16 @@
                     <label for="introduction-field">Introduction</label>
                     <textarea name="introduction" id="introduction-field" rows="3"
                               class="form-control">{{ old('introduction', $user->introduction) }}</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="" class="avatar-label">Avatar</label>
+                    <input type="file" name="avatar">
+
+                    @if($user->avatar)
+                        <br/>
+                        <img src="{{ $user->avatar }}" alt="" class="thumbnail img-responsive" width="200">
+                    @endif
+
                 </div>
                 <div class="well well-sm">
                     <button class="btn btn-primary" type="submit">Submit</button>
