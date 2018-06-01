@@ -43,11 +43,18 @@
                             {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="{{ route('users.edit', Auth::id()) }}">Edit Profile</a></li>
+                            <li>
+                                <a href="{{ route('users.show', Auth::id()) }}">
+                                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>User Center
+                                </a>
+                            </li>
+                            <li><a href="{{ route('users.edit', Auth::id()) }}">
+                                    <span class="glyphicon glyphicon-edit"></span> Edit Profile</a></li>
                             <li>
                                 <a href="{{ route('logout') }}"
                                    onclick="event.preventDefault();document.getElementById('logout-form').submit()"
-                                >logout</a>
+                                >
+                                    <span class="glyphicon glyphicon-log-out"></span> logout</a>
                                 <form action="{{ route('logout') }}" id="logout-form" method="post"
                                    style="display:none;">{{csrf_field()}}</form>
                             </li>
