@@ -1,5 +1,7 @@
 <div class="panel panel-default">
     <div class="panel-body">
-        Sidebar
+        <a href="{{ route('topics.create') }}" class="btn btn-success btn-block" aria-lable="Left Align">
+            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>新建贴子
+        </a>
     </div>
 </div>
