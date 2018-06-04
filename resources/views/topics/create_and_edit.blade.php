@@ -40,9 +40,11 @@
                     </div>
                         <div class="form-group">
                             <select name="category_id" id="" class="form-control" required>
-                                <option value="" hidden disabled selected>choose category</option>
+                                <option value="" hidden disabled {{ $topic->id?'':'selected' }}>choose category</option>
                                 @foreach($categories as $v)
-                                    <option value="{{ $v->id }}">{{ $v->name }}</option>
+                                    <option value="{{ $v->id }}"
+                                            {{ $topic->category_id == $v->id?'selected':'' }}
+                                       >{{ $v->name }}</option>
                                 @endforeach
                             </select>
                         </div>
