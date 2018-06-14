@@ -1,5 +1,7 @@
 @extends('layouts.app')
-@section('title')My Notifications@stop
+@section('title')
+My Notifications
+@stop
 
 @section('content')
 <div class="container">
@@ -14,7 +16,7 @@
         @if($notifications->count())
         <div class="notification-list">
           @foreach($notifications as $notification)
-            @include('notifications.types._' . snake_case(class_basename($notification->type)));
+            @include('notifications.types._' . snake_case(class_basename($notification->type)))
           @endforeach
           {!! $notifications->render() !!}
         </div>
