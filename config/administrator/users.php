@@ -10,22 +10,26 @@ return [
     'model' => User::class,
 
     'columns' => [
-        'id' => [
-            'title' => 'ID'
+        'id',
+        'avatar' => [
+            'title' => '头像',
+            'output' => function($avatar, $model){
+                return empty($avatar)?'N/A': '<img src="'. $avatar .'" width="40"/>';
+            },
+            'sortable' => false,
         ],
         'name' => [
             'title' => '姓名',
+            'sortable' => false,
+            'output' => function($name, $model){
+                return '<a href="/users/'.$model->id. '" target="_blank">'. $name . '</a>';
+            }
         ],
         'email' => [
             'title' => '邮箱'
         ],
-        'created_at',
-
         'operation' => [
             'title'  => '管理',
-            'output' => function ($value, $model) {
-                return $value;
-            },
             'sortable' => false,
         ],
     ],
@@ -33,21 +37,35 @@ return [
     'edit_fields' => [
         'name' => [
             'title' => '姓名',
-            'type' => 'text'
         ],
         'email' => [
             'title' => '邮箱',
-            'type' => 'text'
         ],
-        'introduction' => [
-            'title' => '简介',
-            'type' => 'textarea'
-        ]
+        'password' => [
+            'title' => '密码',
+            'type' => 'password',
+        ],
+        'avatar' => [
+            'title' => '用户头像',
+            'type' => 'image',
+            'location' => public_path() . '/uploads/images/avatars',
+        ],
+        'roles' => [
+            'title' => '用户角色',
+            'type' => 'relationship',
+            'name_field' => 'name',
+        ],
     ],
 
     'filters' => [
-        'title' => [
-            'title' => '标题',
+        'id' => [
+            'title' => '用户 ID',
+        ],
+        'name' => [
+            'title' => '用户名',
+        ],
+        'email' => [
+            'title' => '邮箱',
         ]
     ],
 
