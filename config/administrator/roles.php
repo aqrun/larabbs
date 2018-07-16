@@ -21,7 +21,7 @@ return [
                 $model->load('permissions');
                 $result = [];
                 foreach($model->permissions as $permission){
-                    $result[] = $permission->name,
+                    $result[] = $permission->name;
                 }
                 return empty($result)?'N/A': implode($result, ' | ');
             },
