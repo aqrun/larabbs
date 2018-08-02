@@ -11,13 +11,13 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="text-center">
-                        Author: {{ $topic->user->name }}
+                        Author: {{ $topic->user->name??'' }}
                     </div>
                     <hr>
                     <div class="media">
                         <div align="center">
-                            <a href="{{ route('users.show', $topic->user->id) }}">
-                                <img src="{{ $topic->user->avatar }}" alt="" class="thumbnail img-responsive"
+                            <a href="{{ route('users.show', $topic->user->id??'') }}">
+                                <img src="{{ $topic->user->avatar ?? '' }}" alt="" class="thumbnail img-responsive"
                                      width="300" height="300"
                                 >
                             </a>
