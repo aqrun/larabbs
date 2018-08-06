@@ -16,7 +16,7 @@
             <div class="container">
                 @yield('content')
             </div>
-            @include('layouts._footer');
+            @include('layouts._footer')
         </div>
 
         <script src="{{ asset('js/app.js') . '?v=' . time() }}"> </script>
