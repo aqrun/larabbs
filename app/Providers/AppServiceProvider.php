@@ -13,7 +13,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $this->setCarbonLang();
     }
 
     /**
@@ -24,5 +24,17 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         //
+    }
+    
+    protected function setCarbonLang()
+    {
+        //////////////////////////
+        //set carbon language
+        $lang_array = [
+            'en' => 'en',
+            'zh-CN' => 'zh',
+        ];
+        $lang = $lang_array[config('app.locale')]??'en';
+        \Carbon\Carbon::setLocale($lang);
     }
 }

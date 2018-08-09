@@ -1,14 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="card card-default col-md-10 col-md-offset-1">
-        <div class="card-title">
-            <h4>
-                <i class="glyphicon glyphicon-edit"></i>编辑个人资料
+<div class="container d-flex justify-content-center">
+    <div class="card card-default col-md-10">
+        <div class="card-header bg-white">
+            <h4 class="card-title" style="padding-top:2rem">
+                <i class="glyphicon glyphicon-edit"></i>{{ __('users.edit_profile') }}
             </h4>
         </div>
 
+        @include('common.error')
+        
         <div class="card-body">
 
             <form action="{{ route('users.update', $user->id) }}" method="POST" accept-charset="UTF-8">
@@ -25,7 +27,7 @@
                 </div>
                 <div class="form-group">
                     <label for="introduction-field">个人简介</label>
-                    <textarea cols="30" id="" name="" rows="3" id="introduction-field"
+                    <textarea cols="30" name="introduction" rows="3" id="introduction-field"
                               class="form-control">{{ old('introduction', $user->introduction) }}</textarea>
                 </div>
                 <div class="well sell-sm">
