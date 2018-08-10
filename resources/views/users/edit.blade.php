@@ -13,7 +13,9 @@
         
         <div class="card-body">
 
-            <form action="{{ route('users.update', $user->id) }}" method="POST" accept-charset="UTF-8">
+            <form action="{{ route('users.update', $user->id) }}" method="POST" 
+                enctype="multipart/form-data"
+                accept-charset="UTF-8">
                 <input name="_method" type="hidden" value="PUT"/>
                 @csrf
 
@@ -29,6 +31,15 @@
                     <label for="introduction-field">个人简介</label>
                     <textarea cols="30" name="introduction" rows="3" id="introduction-field"
                               class="form-control">{{ old('introduction', $user->introduction) }}</textarea>
+                </div>
+                <div class="form-group">
+                    <label class="avatar-label">用户头像</label>
+                    <input type="file" name="avatar"/>
+                    
+                    @if($user->avatar)
+                        <br/>
+                        <img class="thumbnail img-responsive" src="{{ $user->avatar }}" width="200" />
+                    @endif
                 </div>
                 <div class="well sell-sm">
                     <button class="btn btn-primary" type="submit">保存</button>

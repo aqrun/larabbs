@@ -9,7 +9,8 @@
                 <div class="card-body">
                     <div class="media" style="flex-direction:column;">
                         <div align="center">
-                            <img class="img-thumbnail img-fluid" alt="" src="https://fsdhubcdn.phphub.org/uploads/images/201709/20/1/PtDKbASVcz.png?imageView2/1/w/600/h/600" width="300px" height="300px"/>
+                            <img class="img-thumbnail img-fluid" alt="" 
+                                src="{{ $user->avatar }}" width="300px" height="300px"/>
                         </div>
                         <div class="clearfix"></div>
                         <div class="media-body w-100">
