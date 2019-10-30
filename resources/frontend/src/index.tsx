@@ -1,12 +1,26 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+/// <reference path="global.d.ts" />
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import 'bootstrap/js/src';
+import { common } from './common';
+//import { getCurrentPath } from './common/utils'
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+import './css/style.scss'
+
+window.g = window.g || {};
+let g = window.g;
+g['name'] = "test";
+
+function main(){
+    common();
+    /*
+    let allModules:{[index:string] : ()=>{}} = {
+        '/': () => import('app/main').then(m=>m.init()),
+        '/login': () => import('app/auth').then(m=>m.init()),
+    };
+    let current_path:string = getCurrentPath();
+    if(current_path in allModules){
+        allModules[current_path]();
+    }
+    */
+}
+main();
