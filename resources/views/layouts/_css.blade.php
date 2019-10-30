@@ -1,1 +1,1 @@
-<link href="{{ asset('static/dist/css/main.062d49cc.chunk.css') }}" rel="stylesheet">
+<link href="{{ asset('static/dist/css/main.1533ac16.chunk.css') }}" rel="stylesheet">
