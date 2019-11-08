@@ -2,10 +2,10 @@
 
 @import '~bootstrap/scss/bootstrap.scss';
 
-@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+/*@import '~@fortawesome/fontawesome-free/scss/fontawesome';
 @import '~@fortawesome/fontawesome-free/scss/regular';
 @import '~@fortawesome/fontawesome-free/scss/solid';
-@import '~@fortawesome/fontawesome-free/scss/brands';
+@import '~@fortawesome/fontawesome-free/scss/brands';*/
 
 
 body {
@@ -66,4 +66,46 @@ body {
     border-radius: 4px;
     padding: 3px;
   }
+}
+/* Topic Index Page */
+.topics-index-page {
+  .topic-list {
+    .nav>li>a {
+      position: relative;
+      display: block;
+      padding: 5px 14px;
+      font-size: 0.9em;
+    }
+    .media-left{
+      width: 50px;
+      margin-right: 10px;
+    }
+
+    a {
+      color: #444444;
+    }
+
+    .meta {
+      font-size: 0.9em;
+      color: #b3b3b3;
+
+      a {
+        color: #b3b3b3;
+      }
+    }
+
+    .badge {
+      background-color: #d8d8d8;
+    }
+
+    hr {
+      margin-top: 12px;
+      margin-bottom: 12px;
+      border: 0;
+      border-top: 1px solid #dcebf5;
+    }
+  }
+}
+#app > div.container {
+  margin-bottom: 100px;
 }

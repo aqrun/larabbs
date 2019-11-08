@@ -11,6 +11,7 @@
         window.g = window.g || {};
         g.baseUrl = '/';
     </script>
+    <link href="{{ asset('static/plugins/fontawesome-free-5.11.2-web/css/all.min.css') }}" rel="stylesheet">
     @include('layouts._css')
 </head>
 <body>

@@ -20,7 +20,7 @@
 
                 <small class="media-body meta text-secondary">
                     <a href="#" class="text-secondary" title="{{ $topic->category->name }}">
-                        <i class="far fa-folder">{{ $topic->category->name }}</i>
+                        <i class="far fa-folder"> {{ $topic->category->name }}</i>
                     </a>
                 </small>
 
