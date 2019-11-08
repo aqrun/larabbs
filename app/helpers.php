@@ -15,3 +15,9 @@ function main_menu()
         5=>['id' => 5, 'name' => '公告', 'href' => '/categories/4'],
     ];
 }
+
+function make_excerpt($value, $length = 200)
+{
+    $excerpt = trim(preg_replace('/\r\n|\r|\n+/', ' ', strip_tags($value)));
+    return Str::limit($excerpt, $length);
+}

@@ -15,6 +15,6 @@ class Controller extends BaseController
 
     public function __construct()
     {
-        config([self::MAIN_MENU => 1]);
+        config([self::MAIN_MENU => 0]);
     }
 }
