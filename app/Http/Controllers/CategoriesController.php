@@ -14,12 +14,17 @@ class CategoriesController extends Controller
         config([self::MAIN_MENU => 2]);
     }
 
-    public function show(Category $category)
+    public function show(Category $category, Request $request)
     {
         $categoryIdToMenu = [1 => 2, 2 => 3, 3=>4, 4=>5];
         config([self::MAIN_MENU => $categoryIdToMenu[$category->id]]);
-        $topics = Topic::where('category_id', $category->id)->paginate(20);
-        return view('topics.index', compact('topics', 'category'));
+
+        $order = $request->order;
+        $topics = Topic::withOrder($order)
+            ->where('category_id', $category->id)
+            ->with('user', 'category')
+            ->paginate(20);
+        return view('topics.index', compact('topics', 'category', 'order'));
     }
 
 }

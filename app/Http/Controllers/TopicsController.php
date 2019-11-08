@@ -12,10 +12,13 @@ class TopicsController extends Controller
         config([self::MAIN_MENU => 1]);
     }
 
-    public function index()
+    public function index(Request $request, Topic $topic)
     {
-        $topics = Topic::with(['user', 'category'])->paginate(30);
-        return view('topics.index', compact('topics'));
+        $order = $request->order;
+        $topics = Topic::withOrder($order)
+            ->with(['user', 'category'])
+            ->paginate(20);
+        return view('topics.index', compact('topics', 'order'));
     }
 
 }
