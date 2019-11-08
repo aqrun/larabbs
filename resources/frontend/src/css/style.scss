@@ -67,8 +67,12 @@ body {
     padding: 3px;
   }
 }
+.list-thumb{
+  width: 50px;
+  margin-right: 10px;
+}
 /* Topic Index Page */
-.topics-index-page {
+.topics-index-page,.categories-show-page {
   .topic-list {
     .nav>li>a {
       position: relative;
@@ -77,8 +81,7 @@ body {
       font-size: 0.9em;
     }
     .media-left{
-      width: 50px;
-      margin-right: 10px;
+
     }
 
     a {

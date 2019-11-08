@@ -10,4 +10,11 @@ use Illuminate\Routing\Controller as BaseController;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    const MAIN_MENU = 'mainMenu';
+
+    public function __construct()
+    {
+        config([self::MAIN_MENU => 1]);
+    }
 }

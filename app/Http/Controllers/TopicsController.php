@@ -9,6 +9,7 @@ class TopicsController extends Controller
 {
     public function __construct()
     {
+        config([self::MAIN_MENU => 1]);
     }
 
     public function index()

@@ -13,7 +13,11 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
-
+                @foreach(main_menu() as $v)
+                    <li class="nav-item{{ config('mainMenu')==$v['id']?' active':'' }}">
+                        <a class="nav-link" href="{{ $v['href'] }}">{{ $v['name'] }}</a>
+                    </li>
+                @endforeach
             </ul>
 
             <!-- Right Side Of Navbar -->

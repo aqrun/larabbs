@@ -2,7 +2,7 @@
 <ul class="list-unstyled">
     @foreach($topics as $topic)
         <li class="media">
-            <div class="media-left">
+            <div class="media-left list-thumb">
                 <a href="{{ route('users.show', [$topic->user_id]) }}">
                     <img src="{{ $topic->user->avatar }}"
                          title="{{ $topic->user->name }}"
@@ -19,7 +19,8 @@
                 </div>
 
                 <small class="media-body meta text-secondary">
-                    <a href="#" class="text-secondary" title="{{ $topic->category->name }}">
+                    <a href="{{ route('categories.show', $topic->category_id) }}"
+                       class="text-secondary" title="{{ $topic->category->name }}">
                         <i class="far fa-folder"> {{ $topic->category->name }}</i>
                     </a>
                 </small>
