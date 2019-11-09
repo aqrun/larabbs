@@ -25,6 +25,11 @@ class TopicsController extends Controller
         return view('topics.index', compact('topics', 'order'));
     }
 
+    public function show(Request $request, Topic $topic)
+    {
+        return view('topics.view', compact('topic'));
+    }
+
     public function create(Request $request, Topic $topic)
     {
         $categories = Category::all();

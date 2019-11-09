@@ -1,5 +1,23 @@
 @extends('layouts.app')
 
+@section('styles')
+    <link href="{{ asset('static/plugins/fontawesome-free-5.11.2-web/css/all.min.css') }}" rel="stylesheet">
+@endsection
+
+@section('scripts')
+    <script src="{{ asset('static/plugins/simditor-2.3.28/scripts/module.js') }}"></script>
+    <script src="{{ asset('static/plugins/simditor-2.3.28/scripts/hotkeys.js') }}"></script>
+    <script src="{{ asset('static/plugins/simditor-2.3.28/scripts/uploader.js') }}"></script>
+    <script src="{{ asset('static/plugins/simditor-2.3.28/scripts/simditor.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            var editor = new Simditor({
+                textarea: $('#editor'),
+            });
+        });
+    </script>
+@endsection
+
 @section('content')
 <div class="container">
     <div class="col-md-10 offset-md-1">
