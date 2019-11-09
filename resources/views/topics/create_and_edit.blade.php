@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('styles')
-    <link href="{{ asset('static/plugins/fontawesome-free-5.11.2-web/css/all.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('static/plugins/simditor-2.3.28/styles/simditor.css') }}" rel="stylesheet">
 @endsection
 
 @section('scripts')
@@ -13,6 +13,16 @@
         $(document).ready(function() {
             var editor = new Simditor({
                 textarea: $('#editor'),
+                upload: {
+                    url: '{{ route('topics.upload_image') }}',
+                    params: {
+                        _token: '{{ csrf_token() }}'
+                    },
+                    fileKey: 'upload_file',
+                    connectionCount: 3,
+                    leaveConfirm: '文件上传中，关闭此页面将取消上传。'
+                },
+                pasteImage: true,
             });
         });
     </script>

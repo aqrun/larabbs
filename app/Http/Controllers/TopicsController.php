@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Handlers\ImageUploadHandler;
 use Illuminate\Http\Request;
 use App\Models\Topic;
 use App\Models\Category;
@@ -43,6 +44,32 @@ class TopicsController extends Controller
         $topic->save();
 
         return redirect()->route('topics.show', $topic->id)->with('success', '帖子创建成功！');
+    }
+
+    public function edit(){}
+
+    public function update(){}
+
+    public function delete(){}
+
+    public function uploadImage(Request $request, ImageUploadHandler $uploadHandler)
+    {
+        // init back data, default is false
+        $data = [
+            'success' => false,
+            'msg' => '上传失败！',
+            'file_path' => ''
+        ];
+
+        if($file = $request->upload_file) {
+            $result = $uploadHandler->save($file, 'topics', \Auth::id(), 1024);
+            if($result){
+                $data['file_path'] = $result['path'];
+                $data['msg'] = '上传成功!';
+                $data['success'] = true;
+            }
+        }
+        return $data;
     }
 
 }
