@@ -25,7 +25,7 @@ class SlugTranslateHandler
         // generate sign
         // http://api.fanyi.baidu.com/api/trans/product/apidoc
         // appid + q + salt + key
-        $sign = md5(appid . $text . $salt . $key);
+        $sign = md5($appid . $text . $salt . $key);
 
         // request data
         $query = http_build_query([

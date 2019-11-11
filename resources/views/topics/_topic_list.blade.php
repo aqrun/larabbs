@@ -11,9 +11,9 @@
             </div>
             <div class="media-body">
                 <div class="media-heading mt-0 mb-1">
-                    <a href="{{ route('topics.show', [$topic->id]) }}"
+                    <a href="{{ $topic->link() }}"
                        title="{{ $topic->title }}">{{ $topic->title }}</a>
-                    <a href="{{ route('topics.show', [$topic->id]) }}" class="float-right">
+                    <a href="{{ $topic->link() }}" class="float-right">
                         <span class="badge badge-secondary badge-pill">{{ $topic->reply_count }}</span>
                     </a>
                 </div>
