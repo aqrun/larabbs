@@ -3,6 +3,7 @@ namespace App\Handlers;
 
 use GuzzleHttp\Client;
 use Overtrue\Pinyin\Pinyin;
+use Log;
 
 class SlugTranslateHandler
 {
@@ -36,6 +37,10 @@ class SlugTranslateHandler
             'salt' => $salt,
             'sign' => $sign,
         ]);
+
+        if(config('app.env') == 'local') {
+            Log::info('baidu_url: ' . $api.$query);
+        }
 
         $response = $http->get($api.$query);
         $result = json_decode($response->getBody(), true);
