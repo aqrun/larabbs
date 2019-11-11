@@ -51,4 +51,9 @@ class Topic extends BaseModel
         ], $params));
     }
 
+    public function replies()
+    {
+        return $this->hasMany(Reply::class);
+    }
+
 }
