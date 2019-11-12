@@ -30,13 +30,17 @@
 
                     <ul class="nav nav-tabs">
                         <li class="nav-item">
-                            <a href="#" class="nav-link active bg-transparent">Ta 的话题</a>
+                            <a href="{{ route('users.show', $user->id) }}" class="nav-link bg-transparent{{ empty($tab)?' active':'' }}">Ta 的话题</a>
                         </li>
                         <li class="nav-item">
-                            <a href="" class="nav-link">Ta 的回复</a>
+                            <a href="{{ route('users.show', [$user->id, 'tab'=>'replies']) }}" class="nav-link bt-transparent{{ $tab=='replies'?' active':'' }}">Ta 的回复</a>
                         </li>
                     </ul>
-                    @include('users._topics', ['topics' => $user->topics()->recent()->paginate(5)])
+                    @if($tab=='replies')
+                      @include('users._replies', ['replies' => $user->replies()->with('topic')->recent()->paginate(5)])
+                    @else
+                      @include('users._topics', ['topics' => $user->topics()->recent()->paginate(5)])
+                    @endif
                 </div>
             </div>
 

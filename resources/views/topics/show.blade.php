@@ -23,7 +23,7 @@
 
         <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 topic-content">
             <div class="card">
-                <dvi class="card-body">
+                <div class="card-body">
                     <h1 class="text-center mt-3 mb-3">{{ $topic->title }}</h1>
 
                     <div class="article-meta text-center text-secondary">
@@ -56,8 +56,17 @@
                         </form>
                     </div>
                     @endcan
-                </dvi>
+                </div>
             </div>
+
+            {{-- 用户回复列表 --}}
+            <div class="card topic-reply mt-4">
+              <div class="card-body">
+                @include('topics._reply_box', ['topic' => $topic])
+                @include('topics._reply_list', ['replies' => $topic->replies()->with('user')->get()])
+              </div>
+            </div>
+
         </div>
 
     </div>
