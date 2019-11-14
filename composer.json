@@ -44,7 +44,8 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "app/"
+            "App\\": "app/",
+            "Frozennode\\Administrator\\": "packages/summerblue/administrator/src/"
         },
         "classmap": [
             "database/seeds",
