@@ -22,9 +22,8 @@ class ReplyObserver
      */
     public function created(Reply $reply)
     {
-        \Log::info('reply create');
-        $reply->topic->reply_count = $reply->topic->replies->count();
-        $reply->topic->save();
+        //\Log::info('reply create');
+        $reply->topic->updateReplyCount();
         //$reply->topic->increment('reply_count', 1);
 
         // notify topic author has new comment
@@ -39,7 +38,7 @@ class ReplyObserver
      */
     public function deleted(Reply $reply)
     {
-        //
+        $reply->topic->updateReplyCount();
     }
 
 

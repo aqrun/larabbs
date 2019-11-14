@@ -18,9 +18,9 @@ class ReplyPolicy
      * @param  \App\Models\Reply  $reply
      * @return mixed
      */
-    public function delete(User $user, Reply $reply)
+    public function destroy(User $user, Reply $reply)
     {
-        return $user->id == $reply->user_id;
+        return $user->isAuthorOf($reply) || $user->isAuthorOf($reply->topic);
     }
 
 
