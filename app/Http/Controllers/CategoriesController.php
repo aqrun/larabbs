@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Topic;
 use App\Models\Category;
+use App\Models\User;
 
 class CategoriesController extends Controller
 {
@@ -14,7 +15,7 @@ class CategoriesController extends Controller
         config([self::MAIN_MENU => 2]);
     }
 
-    public function show(Category $category, Request $request)
+    public function show(Category $category, Request $request, User $user)
     {
         $categoryIdToMenu = [1 => 2, 2 => 3, 3=>4, 4=>5];
         config([self::MAIN_MENU => $categoryIdToMenu[$category->id]]);
@@ -24,7 +25,10 @@ class CategoriesController extends Controller
             ->where('category_id', $category->id)
             ->with('user', 'category')
             ->paginate(20);
-        return view('topics.index', compact('topics', 'category', 'order'));
+
+        $active_users = $user->getActiveUsers();
+
+        return view('topics.index', compact('topics', 'category', 'order', 'active_users'));
     }
 
 }

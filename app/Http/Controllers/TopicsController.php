@@ -8,6 +8,7 @@ use App\Models\Topic;
 use App\Models\Category;
 use Auth;
 use App\Http\Requests\TopicRequest;
+use App\Models\User;
 
 class TopicsController extends Controller
 {
@@ -17,13 +18,17 @@ class TopicsController extends Controller
         config([self::MAIN_MENU => 1]);
     }
 
-    public function index(Request $request, Topic $topic)
+    public function index(Request $request, Topic $topic, User $user)
     {
         $order = $request->order;
         $topics = Topic::withOrder($order)
             ->with(['user', 'category'])
             ->paginate(20);
-        return view('topics.index', compact('topics', 'order'));
+
+        $active_users = $user->getActiveUsers();
+        //dd($active_users);
+
+        return view('topics.index', compact('topics', 'order', 'active_users'));
     }
 
     public function show(Request $request, Topic $topic)
