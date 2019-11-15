@@ -9,6 +9,7 @@ use App\Models\Category;
 use Auth;
 use App\Http\Requests\TopicRequest;
 use App\Models\User;
+use App\Models\Link;
 
 class TopicsController extends Controller
 {
@@ -18,7 +19,7 @@ class TopicsController extends Controller
         config([self::MAIN_MENU => 1]);
     }
 
-    public function index(Request $request, Topic $topic, User $user)
+    public function index(Request $request, Topic $topic, User $user, Link $link)
     {
         $order = $request->order;
         $topics = Topic::withOrder($order)
@@ -27,8 +28,9 @@ class TopicsController extends Controller
 
         $active_users = $user->getActiveUsers();
         //dd($active_users);
+        $links = $link->getAllCached();
 
-        return view('topics.index', compact('topics', 'order', 'active_users'));
+        return view('topics.index', compact('topics', 'order', 'active_users', 'links'));
     }
 
     public function show(Request $request, Topic $topic)
