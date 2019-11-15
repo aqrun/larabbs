@@ -120,7 +120,7 @@ return array(
      */
     'login_path' => 'permission-denied',
 
-    /
+    /*
      * The logout path is the path where Administrator will send the user when they click the logout link
      *
      * @type string
