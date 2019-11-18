@@ -168,6 +168,7 @@ return [
          */
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         Frozennode\Administrator\AdministratorServiceProvider::class,
+        App\Providers\EasySmsServiceProvider::class,
         /*
          * Application Service Providers...
          */
