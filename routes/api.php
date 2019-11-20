@@ -20,6 +20,10 @@ Route::prefix('v1')
 
         Route::middleware('throttle:' . config('api.rate_limits.sign'))
             ->group(function(){
+
+                // captcha
+                Route::post('captchas', 'CaptchasController@store')->name('captchas.store');
+
                 //短信验证码
                 Route::post('verificationCodes', 'VerificationCodesController@store')
                     ->name('verificationCodes.store');
