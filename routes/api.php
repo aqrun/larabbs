@@ -32,9 +32,16 @@ Route::prefix('v1')
                 //第三方登录 where 限制只匹配weixin  where('social_type', 'weixin|weibo')
                 Route::post('socials/{social_type}/authorizations', 'AuthorizationsController@socialStore')
                     ->where('social_type', 'weixin')
-                    ->name('socials.authorizations.store');
+                    ->name('api.socials.authorizations.store');
+                Route::post('authorizations', 'AuthorizationsController@store')
+                    ->name('api.authorizations.store');
 
-
+                // 刷新TOKEN
+                Route::put('authorizations/current', 'AuthorizationsController@update')
+                    ->name('authorizations.update');
+                //删除TOKEN
+                Route::delete('authorizations/current', 'AuthorizationsController@destroy')
+                    ->name('authorizations.destroy');
             });
 
         Route::middleware('throttle:' . config('api.rate_limits.access'))
