@@ -53,6 +53,7 @@ class Kernel extends HttpKernel
         ],
 
         'api' => [
+            \App\Http\Middleware\AcceptHeader::class,
             // 使用别名调用中间件
             'throttle:60,1',
             'bindings',
